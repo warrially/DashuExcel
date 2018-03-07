@@ -20,3 +20,31 @@
 ```
 local TExcel = require "TExcel" -- 开头引用
 ```
+
+
+## 三、Excel库
+
+### 1. 创建一个Excel
+```
+local xls1 = TExcel:create();
+```
+### 2. 关闭一个Excel
+```
+xls1:free()
+```
+### 3. 从文件中读取Excel数据
+```
+xls1:loadFromFile("读取名称.xlsx")
+```
+### 4. 保存Excel数据到文件中
+```
+xls1:saveToFile("保存名称.xlsx")
+```
+### 5. 添加一个Sheet
+```
+xls1:addSheet()
+```
+### 6. 获得指定的Sheet
+```
+xls1:getSheet(1)
+```
