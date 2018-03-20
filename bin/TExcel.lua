@@ -6,6 +6,8 @@ Date   2018-02-24 11:05:31
 Last Modified by   Warrially
 Last Modified time 2018-02-26 21:19:19
 ]]
+require "StringEx"
+require "MathEx"
 local xls = require "ExcelLua";
 local TSheet = require "TSheet"
 
