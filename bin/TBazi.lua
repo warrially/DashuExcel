@@ -1,6 +1,11 @@
 --- LUA八字库
 local TBazi = {}
 
+-- 新历历法
+local ctInvalid     = 1 --非法
+local ctJulian      = 2 --儒略
+local ctGregorian   = 3 --格利高里
+
 -- 从新历获取八字(年, 月, 日, 时, 分, 秒, 性别男1,女0)
 function TBazi:GetBazi(data)
     local nYear = data.nYear or 0;
@@ -84,6 +89,7 @@ function TBazi:GetMonthDays(nYear, nMonth)
 end;
 
 
+
 -- 返回某公历是否闰年
 function TBazi:GetIsLeapYear(nYear)
     if self:GetCalendarType(nYear, 1, 1) == ctGregorian then
@@ -95,9 +101,32 @@ function TBazi:GetIsLeapYear(nYear)
     end;
 end;
 
+
+-- 根据公历日期判断当时历法
+function TBazi:GetCalendarType(nYear, nMonth, nDay)
+    if not self:GetDateIsValid(nYear, nMonth, nDay) then
+        return ctInvalid
+    end
+
+    if nYear > 1582 then
+        return ctGregorian
+    elseif nYear < 1582 then
+        return ctJulian
+    elseif nMonth < 10 then
+        return ctJulian
+    elseif (nMonth == 10) and (nDay <= 4) then
+        return ctJulian
+    elseif (nMonth == 10) and (nDay <= 14) then
+        return ctInvalid
+    else
+        return ctGregorian
+    end
+    -- 在现在通行的历法记载上，全世界居然有十天没有任何人出生过，也没有任何人死亡过，也没有发生过大大小小值得纪念的人或事。这就是1582年10月5日至10月14日。格里奥，提出了公历历法。这个历法被罗马教皇格里高利十三世采纳了。那么误差的十天怎么办？罗马教皇格里高利十三世下令，把1582年10月4日的后一天改为10月15日，这样误差的十天没有了，历史上也就无影无踪地消失了十天，当然史书上也就没有这十天的记载了。“格里高利公历”一直沿用到今天。
+end
+
 TBazi:GetBazi({
     nYear = 1986,
-    nMonth = 9,
+    nMonth = 2,
     nDay = 22,
     nHour = 12
 })
