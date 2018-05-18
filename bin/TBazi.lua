@@ -229,7 +229,10 @@ function TBazi:GetBazi(data)
     local bazi = {
         SolarDate = {
 
-        }
+        },
+        BaziDate = {
+
+        },
     }
 
     -- 通过立春获取当年的年份
@@ -239,7 +242,7 @@ end;
 
 
 -- 获取某个日期的立春, 并且返回八字年
-function TBazi:GetLiChun(nYear, nMonth, nDay, nHour, nMinute, nSecond int) int {
+function TBazi:GetLiChun(nYear, nMonth, nDay, nHour, nMinute, nSecond)
     if (nYear < 1900) or (nYear > 2100) then
         error("非法年份");
         return 0;
@@ -247,44 +250,44 @@ function TBazi:GetLiChun(nYear, nMonth, nDay, nHour, nMinute, nSecond int) int {
 
     -- 大于2月份肯定是当年了
     if nMonth > 2 then
-        return nYear
-    end
-
+        return nYear;
+    end;
+    print(nYear-1899)
     -- 月份对比
-    if nMonth > LI_CHUN_LIST[nYear-1989][1] {
-        return nYear
-    } else if nMonth < LI_CHUN_LIST[nYear-1989][1] {
-        return nYear - 1
-    }
+    if nMonth > LI_CHUN_LIST[nYear-1899][1] then
+        return nYear;
+    elseif nMonth < LI_CHUN_LIST[nYear-1899][1] then
+        return nYear - 1;
+    end;
 
     -- 日期对比
-    if nDay > LI_CHUN_LIST[nYear-1989][2] {
-        return nYear
-    } else if nDay < LI_CHUN_LIST[nYear-1989][2] {
-        return nYear - 1
-    }
+    if nDay > LI_CHUN_LIST[nYear-1899][2] then
+        return nYear;
+    elseif nDay < LI_CHUN_LIST[nYear-1899][2] then
+        return nYear - 1;
+    end;
 
     -- 小时对比
-    if nHour > LI_CHUN_LIST[nYear-1989][3] {
-        return nYear
-    } else if nHour < LI_CHUN_LIST[nYear-1989][3] {
-        return nYear - 1
-    }
+    if nHour > LI_CHUN_LIST[nYear-1899][3] then
+        return nYear;
+    elseif nHour < LI_CHUN_LIST[nYear-1899][3] then
+        return nYear - 1;
+    end;
 
     -- 分钟对比
-    if nMinute > LI_CHUN_LIST[nYear-1989][4] {
-        return nYear
-    } else if nMinute < LI_CHUN_LIST[nYear-1989][4] {
-        return nYear - 1
-    }
+    if nMinute > LI_CHUN_LIST[nYear-1899][4] then
+        return nYear;
+    elseif nMinute < LI_CHUN_LIST[nYear-1899][4] then
+        return nYear - 1;
+    end;
 
     -- 秒钟对比
-    if nSecond > LI_CHUN_LIST[nYear-1989][5] {
+    if nSecond > LI_CHUN_LIST[nYear-1899][5] then
         return nYear
-    }
+    end;
 
-    return nYear - 1
-}
+    return nYear - 1;
+end;
 
 -- 返回公历日期是否合法
 function TBazi:GetDateIsValid(nYear, nMonth, nDay)
