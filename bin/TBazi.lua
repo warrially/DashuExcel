@@ -88,8 +88,6 @@ function TBazi:GetMonthDays(nYear, nMonth)
     return 0
 end;
 
-
-
 -- 返回某公历是否闰年
 function TBazi:GetIsLeapYear(nYear)
     if self:GetCalendarType(nYear, 1, 1) == ctGregorian then
