@@ -81,8 +81,6 @@ function TSheet:lastRow()
     return xls.lastRow(self:this())
 end;
 
-
-
 -- 自动列宽
 function TSheet:autoWidthCol(nCol)
     return xls.autoWidthCol(self:this(), nCol)

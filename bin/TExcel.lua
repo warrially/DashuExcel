@@ -66,6 +66,11 @@ function TExcel:loadFromFile(strFile)
     xls.loadFromFile(self:this(strFile));
 end
 
+-- 从CSV文件载入(文件名:string)
+function TExcel:loadFromCSV(strFile)
+    xls.loadFromCSV(self:this(strFile));
+end
+
 -- 把 123,456,789.00 转换成数字
 function S2F(str)
     return xls.S2F(str);
@@ -79,5 +84,25 @@ function S2D(str)
 end;
 
 stringToDate = S2D
+
+-- 获取文件列表
+function GetFiles(strPath, strPattern)
+    return {xls.GetFiles(strPath, strPattern)}
+end
+
+-- 提取文件名
+function GetFileName(strFile)
+    return xls.GetFileName(strFile);
+end
+
+-- 提取扩展名
+function GetExtension(strFile)
+    return xls.GetExtension(strFile);
+end
+
+-- 提取无扩展名的文件名
+function GetFileNameWithoutExtension(strFile)
+    return xls.GetFileNameWithoutExtension(strFile);
+end
 
 return TExcel
