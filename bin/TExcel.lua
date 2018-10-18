@@ -51,6 +51,11 @@ function TExcel:getSheet(nSheet)
     return self.m_sheetList[nSheet]
 end;
 
+-- 通过单元格的名称获取编号(单元格名称:string)
+function TExcel:getSheetByName(strSheet)
+    return xls.getSheetByName(self:this(strSheet))
+end
+
 -- 添加一个Sheet
 function TExcel:addSheet()
     xls.addSheet(self:this())
