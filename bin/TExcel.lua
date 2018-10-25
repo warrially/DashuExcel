@@ -61,6 +61,11 @@ function TExcel:addSheet()
     xls.addSheet(self:this())
 end
 
+-- 查找文本是否存在
+function TExcel:findText(strFindText)
+    return xls.findText(self:this(strFindText))
+end
+
 -- 保存到文件(文件名:string)
 function TExcel:saveToFile(strFile)
     xls.saveToFile(self:this(strFile));
