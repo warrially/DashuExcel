@@ -56,6 +56,11 @@ function TExcel:getSheetByName(strSheet)
     return xls.getSheetByName(self:this(strSheet))
 end
 
+-- 获取Sheet的数量
+function TExcel:getSheetCount()
+    return xls.getSheetCount(self:this())
+end
+
 -- 添加一个Sheet
 function TExcel:addSheet()
     xls.addSheet(self:this())
