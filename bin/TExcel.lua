@@ -12,7 +12,7 @@ local xls = require "ExcelLua";
 local TSheet = require "TSheet"
 
 for k,v in pairs(xls) do
-    print("库内容", k, v);
+    -- print("库内容", k, v);
 end
 
 
@@ -93,7 +93,7 @@ end;
 
 stringToFloat = S2F
 
--- 把 日期字符串 2011年1月2日 等 转成 日期浮点
+-- 把 日期字符串 2011-1-2 转成 日期浮点
 function S2D(str)
     return xls.S2D(str)
 end;
@@ -119,5 +119,13 @@ end
 function GetFileNameWithoutExtension(strFile)
     return xls.GetFileNameWithoutExtension(strFile);
 end
+
+-- 简易DUMP
+function dump(data) 
+    for k,v in pairs(data) do
+        print(k,v)
+    end
+end;
+
 
 return TExcel

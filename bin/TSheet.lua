@@ -59,6 +59,11 @@ function TSheet:setCells(nCol, nRow, value)
     end;
 end;
 
+-- 设置某个Sheet的名字
+function TSheet:setSheetName(strName)
+    strName = tostring(strName)
+    xls.setSheetName(self:this(strName))
+end;
 
 
 -- 读取(列编号:int, 行编号:int)
